@@ -1,0 +1,19 @@
+<div class="auth-container">
+    <p-card header="Register">
+      <div class="flex flex-column gap-2">
+        <div class="p-float-label">
+          <input pInputText id="email" [(ngModel)]="email" />
+          <label for="email">Email</label>
+        </div>
+        <div class="p-float-label">
+          <p-password id="password" [(ngModel)]="password" [toggleMask]="true" />
+          <label for="password">Password</label>
+        </div>
+        <p-button label="Sign Up" (onClick)="signUp()" [loading]="loading" />
+        <div class="text-center mt-3">
+          <a [routerLink]="['/login']" class="text-primary">Already have an account?</a>
+        </div>
+      </div>
+    </p-card>
+</div>
+<p-toast></p-toast>
