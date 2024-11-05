@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { SupabaseService } from '../../../shared/services/supabase.service';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CardModule } from 'primeng/card';
-import { InputTextModule } from 'primeng/inputtext';
-import { PasswordModule } from 'primeng/password';
-import { ToastModule } from 'primeng/toast';
-import { ButtonModule } from 'primeng/button';
+import { Router, RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatDividerModule} from '@angular/material/divider';
+import { SupabaseService } from '../../../shared/services/supabase.service';
+import { ThemeService } from '../../../shared/services/theme.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -17,37 +20,42 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     FormsModule,
     RouterModule,
-    ButtonModule,
-    CardModule,
-    InputTextModule,
-    PasswordModule,
-    ToastModule
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatDividerModule,
+    HttpClientModule
   ],
-  providers: [MessageService],
+  providers: [ThemeService, HttpClient],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  private readonly _supabase = inject(SupabaseService);
+  private readonly _router = inject(Router);
+  private readonly _snackBar = inject(MatSnackBar)
+  private readonly _themeService = inject(ThemeService);
+  
   email = '';
   password = '';
   loading = false;
-
-  constructor(
-    private supabase: SupabaseService,
-    private router: Router,
-    private messageService: MessageService
-  ) {}
-
+  hidePassword = true;
+  ngOnInit() {
+    console.log('AppComponent');
+    this._themeService.loadTheme().subscribe(res => console.log(res));
+  }
   async signIn() {
     try {
       this.loading = true;
-      await this.supabase.signIn(this.email, this.password);
-      this.router.navigate(['/register']);
+      await this._supabase.signIn(this.email, this.password);
+      this._router.navigate(['/register']);
     } catch (error: any) {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Error',
-        detail: error.message
+      this._snackBar.open(error.message, 'Close', {
+        duration: 5000,
+        horizontalPosition: 'end',
+        verticalPosition: 'top'
       });
     } finally {
       this.loading = false;
