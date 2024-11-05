@@ -1,17 +1,17 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {MatDividerModule} from '@angular/material/divider';
+import { Router, RouterModule } from '@angular/router';
 import { SupabaseService } from '../../../shared/services/supabase.service';
 import { ThemeService } from '../../../shared/services/theme.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -43,8 +43,7 @@ export class LoginComponent {
   loading = false;
   hidePassword = true;
   ngOnInit() {
-    console.log('AppComponent');
-    this._themeService.loadTheme().subscribe(res => console.log(res));
+    //this._themeService.loadTheme().subscribe(res => console.log(res));
   }
   async signIn() {
     try {

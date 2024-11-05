@@ -1,9 +1,7 @@
-import { Routes } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, importProvidersFrom } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter, RouterOutlet } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { importProvidersFrom } from '@angular/core';
+import { provideRouter, RouterOutlet, Routes } from '@angular/router';
 
 const routes: Routes = [
   {

@@ -1,12 +1,12 @@
-<div class="auth-container">
-  <mat-card>
+<div class="auth-container login">
 
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-      <img src="./assets/images/svg/logo.svg">
-    </mat-card-header>
+  <div class="login__card">
+    <div class="login__header">
+      <img src="./assets/images/svg/logo.svg" class="login__logo" >
+      <h3>Login</h3>
+    </div>
 
-    <mat-card-content>
+    <div class="login__form">
       <form class="login-form" (ngSubmit)="signIn()">
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Email</mat-label>
@@ -25,6 +25,18 @@
           {{loading ? 'Signing in...' : 'Sign In'}}
         </button>
       </form>
+    </div>
+
+  </div>
+  <mat-card>
+
+    <mat-card-header>
+      <img src="./assets/images/svg/logo.svg" class="login__logo" >
+      <h3>Login</h3>
+    </mat-card-header>
+
+    <mat-card-content>
+      
     </mat-card-content>
     <mat-card-actions align="end">
       <a mat-button routerLink="/register">Create an account</a>
