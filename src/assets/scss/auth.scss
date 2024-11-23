@@ -34,7 +34,11 @@
         @include min-lg {
             max-width: 240px;
         }
-        
+    }
+
+    &__form {
+        padding: 0 20px;
+        text-align: center;
     }
 
     &__header {

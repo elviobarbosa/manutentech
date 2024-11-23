@@ -1,59 +1,13 @@
 @use '@angular/material' as mat;
 @use '../scss/theme.scss';
 
-
-//@import 'material-theming';
 @include mat.core();
 
-$_primary:  #ffdf95;
-$_accent:  #ffdf95;
-$_warn:  #ffdf95;
-:root {  
-    --mat-primary-color: #006699;  
-    --mat-primary-lighter-color: #b3d9ff;  
-    --mat-primary-darker-color: #004466;  
-    
-    // Cores de contraste  
-    --mat-primary-text-color: #ffffff;  
-    --mat-primary-lighter-text-color: rgba(0, 0, 0, 0.87);  
-    --mat-primary-darker-text-color: #ffffff;  
-    
-    // Cores de destaque (accent)  
-    --mat-accent-color: #ffd740;  
-    --mat-accent-lighter-color: #ffecb3;  
-    --mat-accent-darker-color: #ffc400;  
-    
-    // Cores de aviso  
-    --mat-warn-color: #f44336;  
-    --mat-warn-lighter-color: #ffcdd2;  
-    --mat-warn-darker-color: #d32f2f;  
-}  
-
-:root {
-  @include mat.all-component-themes(theme.$light-theme);
-
-  
-}
 html {
-    --mat-primary-color: #006699;  
-  --mat-primary-lighter-color: #b3d9ff;  
-  --mat-primary-darker-color: #004466;  
-  
-  // Cores de contraste  
-  --mat-primary-text-color: #ffffff;  
-  --mat-primary-lighter-text-color: rgba(0, 0, 0, 0.87);  
-  --mat-primary-darker-text-color: #ffffff;  
-  
-  // Cores de destaque (accent)  
-  --mat-accent-color: #ffd740;  
-  --mat-accent-lighter-color: #ffecb3;  
-  --mat-accent-darker-color: #ffc400;  
-  
-  // Cores de aviso  
-  --mat-warn-color: #f44336;  
-  --mat-warn-lighter-color: #ffcdd2;  
-  --mat-warn-darker-color: #d32f2f;  
+  @include mat.all-component-themes(theme.$light-theme);
+  @include mat.strong-focus-indicators-theme(theme.$light-theme);
 }
+
 html, body { height: 100%; }
 body { 
     font-family: "Barlow", sans-serif;

@@ -9,10 +9,17 @@
       <div class="login__form">
         <h3>Login</h3>
         <form class="login-form" (ngSubmit)="signIn()">
-          <mat-form-field appearance="outline" class="full-width">
+          
+          <mat-form-field appearance="outline" >
             <mat-label>Email</mat-label>
-            <input matInput type="email" [(ngModel)]="email" name="email" required>
+            <input 
+              matInput 
+              type="email" 
+              class="w-100" 
+              [(ngModel)]="email" 
+              name="email" required>
           </mat-form-field>
+        
 
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Password</mat-label>
