@@ -49,4 +49,11 @@ export class SupabaseService {
     const { error } = await this.supabase.auth.resetPasswordForEmail(email);
     if (error) throw error;
   }
+
+  async sendPasswordToEmail(email: string): Promise<{ error: any }> {
+    const { error } = await this.supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'https://seusite.com/reset-password',
+    });
+    return { error };
+  }
 }

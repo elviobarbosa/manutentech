@@ -1,3 +1,14 @@
+@use '@angular/material' as mat;
 mat-form-field {
     width: 100%;
+}
+
+.mat-mdc-unelevated-button {
+    border-radius: 12px;
+}
+
+::ng-deep {
+    .mdc-text-field--outlined .mat-mdc-form-field-infix {
+        --mat-form-field-container-vertical-padding: 10px
+    }
 }

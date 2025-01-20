@@ -4,23 +4,19 @@ import { filter, Subscription } from 'rxjs';
 import { ThemeService } from './shared/services/theme.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  _themeService = inject(ThemeService);
+  //private readonly _themeService = inject(ThemeService);
   private readonly _router = inject(Router);
   private readonly _renderer = inject(Renderer2);
   
   private _routerSubscription!: Subscription;
   
   ngOnInit() {
-    alert('AppComponent ok');
-  //  this._themeService.loadTheme().subscribe(res => console.log(res));
-    console.log('AppComponent ok');
     this._routerSubscription = this._router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
@@ -29,7 +25,6 @@ export class AppComponent implements OnInit {
   }
 
   private updateBodyClass(url: string): void {
-    console.log(url);
     this._renderer.removeClass(document.body, 'login-page');
     this._renderer.removeClass(document.body, 'about-page');
     this._renderer.removeClass(document.body, 'contact-page');

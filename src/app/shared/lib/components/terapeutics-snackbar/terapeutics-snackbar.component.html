@@ -1,0 +1,7 @@
+<span [ngClass]="data.type" matSnackBarLabel>
+   {{ data.type }}
+</span>
+<span [ngClass]="data.type" matSnackBarActions>
+    <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">Fechar</button>
+</span>
+  

@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  
+}
+
+::ng-deep .mat-mdc-snackbar-surface {
+  margin-right: 0 !important;
+  padding-right: 0!important;
+}
+
+.success {
+  background-color: #4caf50;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+  
+.warning {
+  background-color: #ff9800;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+  
+.alert {
+  background-color: #f44336; 
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+  
+  mat-icon {
+    font-size: 20px;
+  }
+  
