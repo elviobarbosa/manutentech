@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CadastroComponent } from './features/cadastro/cadastro.component';
 
 export const routes: Routes = [
     {
@@ -8,6 +9,14 @@ export const routes: Routes = [
     {
       path: 'register',
       loadComponent: () => import('./features/auth/register/register.component').then(m => m.RegisterComponent)
+    },
+    // {
+    //   path: 'cadastro',
+    //   loadComponent: () => import('./features/cadastro/cadastro.component').then(m => m.CadastroComponent)
+    // },
+    {
+      path: 'cadastro',
+      component: CadastroComponent
     },
     {
       path: 'reset-password',
