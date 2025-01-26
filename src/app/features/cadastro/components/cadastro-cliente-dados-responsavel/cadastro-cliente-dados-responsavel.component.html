@@ -1,10 +1,7 @@
 {{form().value | json}}
-@if (hasFormControls(form())) {
-
-
 <form [formGroup]="form()" class="container mt-4">
     <fieldset  class="border p-3 mb-4"> 
-      <legend class="w-auto px-2">Dados do Responsável</legend>
+      <legend class="w-auto px-2">Dados do responsável</legend>
   
       <div class="row">
         <div class="col-md-6 mb-3">
@@ -65,39 +62,73 @@
             </mat-form-field>
         </div>
 
-        <div class="col-md-6 mb-3">
+        <div class="col-md-12 mb-3">
             <mat-form-field appearance="outline" class="w-100">
               <mat-label>Profissão</mat-label>
               <input matInput formControlName="profissao" placeholder="Profissão" />
             </mat-form-field>
         </div>
 
+        <div class="col-12">
+            <legend class="w-auto px-2">Endereço</legend>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>CEP</mat-label>
+              <input matInput formControlName="cep" placeholder="CEP" />
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Logradouro</mat-label>
+              <input matInput formControlName="logradouro" placeholder="Logradouro" />
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Número</mat-label>
+              <input matInput formControlName="numero" placeholder="Número endereço" />
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Complemento</mat-label>
+              <input matInput formControlName="complemento" placeholder="Complemento" />
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Bairro</mat-label>
+              <input matInput formControlName="bairro" placeholder="Bairro" />
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Cidade</mat-label>
+              <input matInput formControlName="cidade" placeholder="Cidade" />
+            </mat-form-field>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field>
+                <mat-label>Estado</mat-label>
+                <select matNativeControl required formControlName="estado">
+                    @for (genero of generos; track $index) {
+                        <option [value]="genero.value">{{genero.label}}</option>
+                    }
+                </select>
+            </mat-form-field>
+        </div>
+
+
       </div>
   
-      <!-- <div class="row">
-        <div class="col-md-6 mb-3">
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Telefone Celular</mat-label>
-            <input matInput formControlName="telefone_celular" placeholder="Digite o celular" />
-          </mat-form-field>
-        </div>
-  
-        <div class="col-md-6 mb-3">
-          <mat-form-field appearance="outline" class="w-100">
-            <mat-label>Telefone Adicional</mat-label>
-            <input matInput formControlName="telefone_adicional" placeholder="Digite o telefone adicional" />
-          </mat-form-field>
-        </div>
-      </div> -->
-  
-
     </fieldset>
-  
-   
-
-    <div class="text-center">
-      <button type="submit" mat-raised-button color="primary" [disabled]="form().invalid">Salvar</button>
-      <button type="button" mat-button color="warn">Cancelar</button>
-    </div>
 </form>
-}

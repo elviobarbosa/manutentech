@@ -1,0 +1,46 @@
+{{pacientesForm.value | json}}
+
+    <fieldset  class="border p-3 mb-4">
+        <legend class="w-auto px-2">Pacientes</legend>
+
+        <div *ngFor="let paciente of pacientesForm.controls; let i = index"  class="border p-2 mb-3">
+            <ng-container [formGroup]="paciente">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Nome</mat-label>
+                        <input matInput formControlName="nome" placeholder="Digite o nome do paciente" />
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-md-4 mb-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Parentesco</mat-label>
+                        <input matInput formControlName="parentesco" placeholder="Digite o parentesco" />
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-md-4 mb-3">
+                        <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Data de Nascimento</mat-label>
+                        <input matInput formControlName="nascimento" type="date" />
+                        </mat-form-field>
+                    </div>
+            
+                    <div class="col-md-6 mb-3">
+                        <mat-form-field>
+                            <mat-label>Gênero</mat-label>
+                            <select matNativeControl required formControlName="genero">
+                                @for (genero of generos; track $index) {
+                                    <option [value]="genero.value">{{genero.label}}</option>
+                                }
+                            </select>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </ng-container>
+            <button type="button" mat-raised-button color="warn" (click)="removePaciente(i)">Remover Paciente</button>
+        </div>
+        
+        <button type="button" mat-raised-button color="primary" (click)="addPaciente()">Adicionar Paciente</button>
+    </fieldset>
