@@ -1,28 +1,47 @@
+@if (showMenuHeader) {
 <mat-sidenav-container class="sidenav-container">
-    <!-- Menu lateral -->
-    <mat-sidenav #sidenav mode="side" class="sidenav" opened>
-      <mat-toolbar color="primary">Menu</mat-toolbar>
-      <mat-nav-list>
-        <a mat-list-item routerLink="/">Home</a>
-        <a mat-list-item routerLink="/opcao1">Opção 1</a>
-        <a mat-list-item routerLink="/opcao2">Opção 2</a>
-      </mat-nav-list>
-    </mat-sidenav>
+  <mat-sidenav #sidenav mode="side" class="sidenav" opened>
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      @for (item of menuLeft; track $index) {
+        @if (item.url) {
+          <a mat-list-item [routerLink]="item.url">{{item.label}}</a>
+        } @else {
+          <a mat-list-item>{{item.label}}</a>
+        }
+
+        @if (item.submenu) 
+        {
+          <mat-nav-list>
+            @for (subItem of item.submenu; track $index) {
+              <a mat-list-item [routerLink]="subItem.url" class="submenu">
+                {{ subItem.label }}
+              </a>
+            }
+            
+          </mat-nav-list>
+        }
+      }
+      
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="header">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Minha Marca</span>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+} @else {
+  <router-outlet></router-outlet>
+}
+
   
-    <!-- Conteúdo principal -->
-    <mat-sidenav-content>
-      <!-- Header -->
-      <mat-toolbar color="primary" class="header">
-        <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>Minha Marca</span>
-      </mat-toolbar>
-  
-      <!-- Área de conteúdo -->
-      <div class="content">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
   

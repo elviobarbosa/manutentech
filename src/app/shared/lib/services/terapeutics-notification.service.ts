@@ -26,7 +26,7 @@ export class TerapeuticsNotificationService {
       duration: 500000,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      
+      panelClass: type
     });
   }
 }
