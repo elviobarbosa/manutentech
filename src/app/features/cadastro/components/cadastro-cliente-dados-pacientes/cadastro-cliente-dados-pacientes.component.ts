@@ -6,6 +6,7 @@ import { GENERO_SELECT } from '../../../../shared/config/texts.config';
 import { JsonPipe, NgFor } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-cadastro-cliente-dados-pacientes',
@@ -16,9 +17,11 @@ import { MatSelectModule } from '@angular/material/select';
     NgFor,
     MatInputModule,
     MatSelectModule,
+    MatButtonModule
   ],
   templateUrl: './cadastro-cliente-dados-pacientes.component.html',
-  styleUrl: './cadastro-cliente-dados-pacientes.component.scss'
+  styleUrl: './cadastro-cliente-dados-pacientes.component.scss',
+  standalone: true
 })
 export class CadastroClienteDadosPacientesComponent {
   form = input<FormGroup>(new FormGroup([]));

@@ -11,6 +11,7 @@ import { GENERO_SELECT } from '../../../../shared/config/texts.config';
 
 @Component({
   selector: 'app-cadastro-cliente-dados-responsavel',
+  standalone: true,
   imports: [
     JsonPipe,
     ReactiveFormsModule,
@@ -30,11 +31,6 @@ export class CadastroClienteDadosResponsavelComponent {
   form = input<FormGroup>(new FormGroup({}));
   
   public invalidField = createInvalidFieldHelper(this.form());
-  public generos = GENERO_SELECT;
-
-  public hasFormControls(formGroup: FormGroup): boolean {
-    return Object.keys(formGroup.controls).length > 0;
-  }
-   
+  public generos = GENERO_SELECT;   
 
 }

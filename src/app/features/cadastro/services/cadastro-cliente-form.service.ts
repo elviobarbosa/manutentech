@@ -1,5 +1,6 @@
 import { Injectable, OnInit, signal, Signal } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +27,18 @@ export class CadastroClienteFormService implements OnInit {
     }),
     pacientes: new FormGroup({}, [Validators.required]),
     responsavelFinanceiro: new FormGroup({
+      repetir: new FormControl(<boolean>false),
       nome: new FormControl('', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
+      genero: new FormControl('', [Validators.required]),
       telefone_celular: new FormControl('', [Validators.required]),
       telefone_adicional: new FormControl('')
     }),
     cobranca: new FormControl('', [Validators.required])
   })
 
-  // public formResponsavel = signal<FormGroup>(this._cadastroCliente.get('responsavel') as FormGroup) ;
+  public repetirControlChanges$!: Observable<boolean>;
+
 
   get formCadastroCliente(): FormGroup {
     return this._cadastroCliente as FormGroup
@@ -52,8 +56,16 @@ export class CadastroClienteFormService implements OnInit {
     return this._cadastroCliente.get('responsavelFinanceiro') as FormGroup
   }
 
+  constructor() {
+    const repetirFormControl = this.formResponsavelFinanceiro.get('repetir');
+    this.repetirControlChanges$ = repetirFormControl?.valueChanges || new Observable()
+  }
+  
   ngOnInit(): void {
-    //console.log(this.formResponsavel)
+    
+    
+    // Atualizar o Signal quando o valor do controle mudar
+    
   }
 
 

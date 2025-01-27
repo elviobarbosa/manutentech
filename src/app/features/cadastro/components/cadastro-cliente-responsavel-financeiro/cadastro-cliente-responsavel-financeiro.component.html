@@ -1,1 +1,66 @@
-<p>cadastro-cliente-responsavel-financeiro works!</p>
+<form [formGroup]="form()" class="container mt-4">
+    <fieldset  class="border p-3 mb-4"> 
+      <legend class="w-auto px-2">Responsável financeiro</legend>
+  
+      <div class="row">
+        <div class="col-12">
+            <mat-checkbox formControlName="repetir">
+                Repetir dados do responsável
+            </mat-checkbox>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" placeholder="Digite o nome" />
+          </mat-form-field>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>CPF</mat-label>
+            <input matInput formControlName="cpf" placeholder="Digite o CPF" />
+            <mat-error *ngIf="form().get('cpf')?.invalid">
+              CPF é obrigatório.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field>
+                <mat-label>Gênero</mat-label>
+                <select matNativeControl required formControlName="genero">
+                    @for (genero of generos; track $index) {
+                        <option [value]="genero.value">{{genero.label}}</option>
+                    }
+                </select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Número celular</mat-label>
+              <input matInput formControlName="telefone_celular" placeholder="Número do celular" />
+              <mat-error *ngIf="form().get('telefone_celular')?.invalid">
+                Informe o número do celular.
+              </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Número telefone adicional</mat-label>
+              <input matInput formControlName="telefone_adicional" placeholder="Número do telefone" />
+              <mat-error *ngIf="form().get('telefone_adicional')?.invalid">
+                Informe o número do celular.
+              </mat-error>
+            </mat-form-field>
+        </div>
+
+        
+
+
+      </div>
+  
+    </fieldset>
+</form>
